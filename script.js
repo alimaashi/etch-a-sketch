@@ -17,12 +17,17 @@ function createNewGrid(gridSize) {
             const newGridCell = document.createElement("div");
             newGridCell.classList.add("grid-cell");
             newGridCell.addEventListener("mouseenter", () => {
-                newGridCell.style.backgroundColor = "red";
+                newGridCell.style.backgroundColor = `rgb(${generateRandomColor()}, ${generateRandomColor()}, ${generateRandomColor()})`
             })
             newRow.appendChild(newGridCell);
         }
         gridContainer.appendChild(newRow);
     }
+}
+
+function generateRandomColor() {
+    const rgbMaxThreshold = 256;
+    return Math.floor(Math.random() * rgbMaxThreshold);
 }
 
 function selectGridSize() {
