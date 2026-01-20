@@ -22,7 +22,8 @@ body {
     height: 100%;
     width: 100%;
     border: 2px solid rgb(235, 235, 235);
-    background-color: rgb(181, 181, 250);
+    background-color: rgb(188, 188, 255);
+    opacity: 0.1;
 }
 
 .select-size-button {

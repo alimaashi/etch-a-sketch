@@ -2,6 +2,7 @@ const gridContainer = document.querySelector(".grid-container");
 const selectSizeButton = document.querySelector(".select-size-button");
 const maxGridNum = 100;
 const minGridNum = 1;
+const defaultColor = "rgb(181, 181, 250)"
 
 function createNewGrid(gridSize) {
     while (gridContainer.firstChild) {
@@ -16,9 +17,6 @@ function createNewGrid(gridSize) {
         for (let j = 0; j < gridSize; j++) {
             const newGridCell = document.createElement("div");
             newGridCell.classList.add("grid-cell");
-            newGridCell.addEventListener("mouseenter", () => {
-                newGridCell.style.backgroundColor = `rgb(${generateRandomColor()}, ${generateRandomColor()}, ${generateRandomColor()})`
-            })
             newRow.appendChild(newGridCell);
         }
         gridContainer.appendChild(newRow);
@@ -47,4 +45,16 @@ selectSizeButton.addEventListener("click", () => {
     if (gridSize != -1) {
         createNewGrid(gridSize);
     }
+})
+
+allCells = document.querySelectorAll(".grid-cell");
+allCells.forEach((cell) => {
+    cell.addEventListener("mouseenter", () => {
+        const backgroundColor = window.getComputedStyle(cell).getPropertyValue("background-color");
+        if (backgroundColor === "rgb(188, 188, 255)") {
+            cell.style.backgroundColor = `rgb(${generateRandomColor()}, ${generateRandomColor()}, ${generateRandomColor()})`;
+        }
+        const currentOpacity = Number(window.getComputedStyle(cell).getPropertyValue("opacity"));
+        cell.style.opacity = currentOpacity + 0.1;
+    })
 })
